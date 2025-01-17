@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="text-center">All tasks</h2>
+    <div class="row">
+      {% for task in tasks %}
+          <div class="card mx-2 my-3" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{task.task_title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{task.task_description}}</h6>
+              
+              <div class="row mb-2">
+                {% for category in task.categories.all %}
+                  <div class="col-auto">
+                    <span class="btn btn-secondary btn-sm active">{{ category.category_name }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+
+              {% if task.is_completed %}
+                <span>Completed</span>
+              {% else %}
+                <a href="{% url 'completetask' %}?id={{task.id}}" class="card-link">Done</a>
+                <a href="{% url 'edittask' %}?id={{task.id}}" class="card-link">Edit</a>
+                <a href="{% url 'deletetask' %}?id={{task.id}}" class="card-link">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

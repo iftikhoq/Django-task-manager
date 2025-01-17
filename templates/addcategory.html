@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Add category</h1>
+<div class="container pt-5 pb-5 d-flex justify-content-center align-items-center shadow-lg" style="width: 80%; height:80%;">
+    <form method="post" class="d-flex flex-column">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="categoryName">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" name="cname">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>        
+</div>
+
+{% endblock %}

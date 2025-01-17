@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Edit task</h1>
+<div class="container pt-5 pb-5 d-flex justify-content-center align-items-center shadow-lg" style="width: 80%; height:80%;">
+    <form method="post" class="d-flex flex-column">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="titleName">Title</label>
+            <input type="text" class="form-control" id="titleName" name="task_title" value="{{task.task_description}}">
+        </div>
+        
+        <div class="form-group">
+            <label for="titleDesc">Description</label>
+            <input type="text" class="form-control" id="titleDesc" name="task_description" value="{{task.task_description}}">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>        
+</div>
+
+{% endblock %}
